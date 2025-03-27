@@ -1,0 +1,59 @@
+<!-- 
+ <h1>{{ question.question_text }}</h1>
+<h2>ID PERGUNTA ..: {{ question.id }}</h2>
+<h3>DATA..........: {{ question.pub_date }}</h3>
+<ul>
+{% for choice in question.choice_set.all %}
+    <li>{{ choice.choice_text }}</li>
+{% endfor %}
+</ul>
+-->
+<form action="{% url 'polls:vote' question.id %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+        <legend><h1>{{ question.question_text }}</h1></legend>
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        {% for choice in question.choice_set.all %}
+            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+            <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+        {% endfor %}
+    </fieldset>
+    <input type="submit" value="Vote">
+</form>
+<!--  
+<form action="{% url 'polls:vote' question.id %}" method="post">
+{% csrf_token %}
+<fieldset>
+    <legend><h1>{{ question.question_text }}</h1></legend>
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    {% for choice in question.choice_set.all %}
+        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+        <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+    {% endfor %}
+</fieldset>
+<input type="submit" value="Vote">
+</form>
+
+Uma rápida explicação:
+
+O template acima exibe um botão radio para cada opção da enquete. 
+O value de cada botão radio está associado ao ID da opção. 
+O name de cada botão radio é a escolha "choice". 
+Isso significa que, quando alguém escolhe um dos botões de radio e submete a formulário, 
+ele vai enviar o dado``choice=#`` por POST onde # é o ID da escolha selecionada. 
+Este é o conceito básico sobre formulários HTML.
+
+Definimos o formulário como , e nós pôr. Usar (em oposição a ) é muito importante, 
+porque o ato de enviar este formulário alterará os dados do lado do servidor. 
+Sempre que você cria um formulário que altera lado do servidor de dados, use . 
+Esta dica não é específica para Django; 
+É uma boa prática de desenvolvimento web em geral.action{% url 'polls:vote' question.id %}method="post"method="post"method="get"method="post"
+
+forloop.counter indica quantas vezes a tag :ttag`for` passou pelo laço.
+
+Como estamos criando um formulário POST (que pode ter o efeito de modificar dados), 
+precisamos nos preocupar com falsificações de solicitações entre sites. 
+Felizmente, você não precisa se preocupar muito, 
+porque o Django vem com um sistema útil para proteção contra isso. Em suma, 
+todos os formulários POST que são direcionado a URLs internos deve usar a tag de modelo.
+-->

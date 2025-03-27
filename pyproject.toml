@@ -1,0 +1,31 @@
+[project]
+name = "08desenvolvimentofullstackpythoncomdjango"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Eduardo da Silva Ferreira",email = "eduardo.s.fereira@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "django",
+    "gunicorn",
+    "django-extensions",
+    "dj-database-url",
+    "psycopg2-binary",
+    "whitenoise[brotli]",
+    "uvicorn",
+]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "mysite.settings"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+ipython = "^9.0.2"
+pytest-django = "*"
+mypy = "*"
+
