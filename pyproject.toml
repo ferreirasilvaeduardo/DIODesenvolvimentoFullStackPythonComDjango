@@ -14,7 +14,7 @@ gunicorn = "*"
 django-extensions = "*"
 dj-database-url = "*"
 psycopg2-binary = "*"
-whitenoise[brotli] = "*"
+"whitenoise[brotli]" = "*"
 uvicorn = "*"
 
 [tool.poetry.group.dev.dependencies]
