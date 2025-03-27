@@ -4,9 +4,9 @@ version = "0.1.0"
 description = ""
 authors = ["Eduardo da Silva Ferreira <eduardo.s.fereira@gmail.com>"]
 readme = "README.md"
-requires-python = ">=3.11"  # AQUI DEVE ESTAR
 
 [tool.poetry.dependencies]
+python = ">=3.11"
 django = "*"
 gunicorn = "*"
 django-extensions = "*"
