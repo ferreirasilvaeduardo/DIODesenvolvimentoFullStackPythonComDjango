@@ -14,8 +14,6 @@ dj-database-url = "*"
 psycopg2-binary = "*"
 whitenoise = { version = "*", extras = ["brotli"] }
 uvicorn = "*"
-
-[tool.poetry.group.dev.dependencies]
 ipython = "^9.0.2"
 pytest-django = "*"
 mypy = "*"
